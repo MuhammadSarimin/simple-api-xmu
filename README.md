@@ -59,6 +59,7 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
 ```bash
   PATCH /api/v1/movies/${id}
 ```
+
 | Parameter | Type     | Description                         |
 | :-------- | :------- | :---------------------------------- |
 | `id`      | `numeric` | **Required**. Id of movie to fetch |
@@ -77,6 +78,7 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
     "rating": 7,
     "image": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
 }
+```
 
 
 #### Delete Movie
