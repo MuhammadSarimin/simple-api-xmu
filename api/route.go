@@ -18,6 +18,13 @@ func Run() {
 		})
 	})
 
+	app.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusNotFound, gin.H{
+			"response_code": "404",
+			"response_msg":  "Not Found",
+		})
+	})
+
 	api := app.Group("/api/v1")
 
 	api.Use(BasicAuth())

@@ -3,6 +3,7 @@ package helper
 import (
 	"encoding/json"
 	"errors"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/muhammadsarimin/simple-api-xmu/types"
@@ -13,6 +14,7 @@ func Error(c *gin.Context, err error) {
 
 	var customErr *types.CustomError
 	var jsonErr *json.UnmarshalTypeError
+	var strErr *strconv.NumError
 
 	if errors.As(err, &customErr) {
 		c.JSON(400, types.Response{
@@ -24,8 +26,8 @@ func Error(c *gin.Context, err error) {
 
 	if errors.As(err, &jsonErr) {
 		c.JSON(400, types.Response{
-			ResponseCode:    "400",
-			ResponseMessage: jsonErr.Error(),
+			ResponseCode:    "002",
+			ResponseMessage: jsonErr.Field + " must be " + jsonErr.Type.String(),
 		})
 		return
 	}
@@ -34,6 +36,14 @@ func Error(c *gin.Context, err error) {
 		c.JSON(404, types.Response{
 			ResponseCode:    "404",
 			ResponseMessage: "movie not found",
+		})
+		return
+	}
+
+	if errors.As(err, &strErr) {
+		c.JSON(400, types.Response{
+			ResponseCode:    "002",
+			ResponseMessage: "id must be an integer",
 		})
 		return
 	}

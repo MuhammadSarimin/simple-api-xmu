@@ -31,7 +31,7 @@ func Validate(T interface{}) error {
 
 		return &types.CustomError{
 			Code:    "002",
-			Message: err.Field() + " " + err.Tag() + " " + err.Value().(string),
+			Message: err.Field() + "must be " + err.Tag(),
 		}
 	}
 

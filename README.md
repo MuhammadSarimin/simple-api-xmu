@@ -45,6 +45,15 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
 | `rating`      | `float`  |               |
 | `image`       | `string` |               |
 
+```bash
+{
+    "title": "Pengabdi Setan 2 Comunion",
+    "description": "dalah sebuah film horor Indonesia tahun 2022 yang disutradarai dan ditulis oleh Joko Anwar sebagai sekuel dari film tahun 2017, Pengabdi Setan",
+    "rating": 7,
+    "image": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+}
+```
+
 #### Update Movie
 
 ```bash
@@ -60,6 +69,14 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
 | `description` | `string` |               |
 | `rating`      | `float`  |               |
 | `image`       | `string` |               |
+
+```bash
+{
+    "title": "Pengabdi Setan 3 Comunion",
+    "description": "dalah sebuah film horor Indonesia tahun 2022 yang disutradarai dan ditulis oleh Joko Anwar sebagai sekuel dari film tahun 2017, Pengabdi Setan",
+    "rating": 7,
+    "image": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+}
 
 
 #### Delete Movie
