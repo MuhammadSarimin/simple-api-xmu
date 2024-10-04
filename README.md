@@ -18,13 +18,13 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
 
 #### Get all Movie
 
-```http
+```bash
   GET /api/v1/movies
 ```
 
 #### Detail Movie
 
-```http
+```bash
   GET /api/v1/movies/${id}
 ```
 
@@ -34,7 +34,7 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
 
 #### Create Movie
 
-```http
+```bash
   POST /api/v1/movies
 ```
 
@@ -47,7 +47,7 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
 
 #### Update Movie
 
-```http
+```bash
   PATCH /api/v1/movies/${id}
 ```
 | Parameter | Type     | Description                         |
@@ -64,10 +64,19 @@ Simple api untuk Movie dimana terdapat beberapa endpoint di antaranya:
 
 #### Delete Movie
 
-```http
+```bash
   DELETE /api/v1/movies/${id}
 ```
 
 | Parameter | Type     | Description                         |
 | :-------- | :------- | :---------------------------------- |
 | `id`      | `numeric` | **Required**. Id of movie to fetch |
+
+### Package
+
+ - [Gin](https://github.com/gin-gonic/gin)
+ - [Gorm](https://gorm.io/)
+ - [Logrus](https://github.com/sirupsen/logrus)
+ - [Caarlos env](https://github.com/caarlos0/env)
+ - [Caarlos env](https://github.com/caarlos0/env)
+ - [Godotenv](github.com/joho/godotenv)
