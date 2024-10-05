@@ -14,14 +14,21 @@ import (
 	"gorm.io/gorm"
 )
 
-func TestFindAll(t *testing.T) {
+var (
+	app *gin.Engine
+)
+
+func TestMain(t *testing.M) {
 
 	store := &mockStore{}
-	r := gin.Default()
-	v1 := r.Group("/api/v1")
-
+	app = gin.Default()
+	v1 := app.Group("/api/v1")
 	v1.Use(api.BasicAuth())
 	api.NewHandler(v1, store)
+
+}
+
+func TestFindAll(t *testing.T) {
 
 	t.Run("Get all movies success", func(t *testing.T) {
 
@@ -34,7 +41,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 200, w.Code)
 
 		var body map[string]interface{}
@@ -58,7 +65,7 @@ func TestFindAll(t *testing.T) {
 
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 401, w.Code)
 
 		var body map[string]interface{}
@@ -92,7 +99,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 200, w.Code)
 	})
 
@@ -117,7 +124,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 400, w.Code)
 
 		var body map[string]interface{}
@@ -151,7 +158,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 200, w.Code)
 	})
 
@@ -176,7 +183,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 400, w.Code)
 
 		var body map[string]interface{}
@@ -199,7 +206,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 200, w.Code)
 	})
 
@@ -213,7 +220,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 404, w.Code)
 
 		var body map[string]interface{}
@@ -236,7 +243,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 200, w.Code)
 
 		var body map[string]interface{}
@@ -259,7 +266,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmu")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 404, w.Code)
 
 		var body map[string]interface{}
@@ -283,7 +290,7 @@ func TestFindAll(t *testing.T) {
 		req.SetBasicAuth("simple-api", "xmux")
 		w := httptest.NewRecorder()
 
-		r.ServeHTTP(w, req)
+		app.ServeHTTP(w, req)
 		assert.Equal(t, 401, w.Code)
 
 		var body map[string]interface{}
